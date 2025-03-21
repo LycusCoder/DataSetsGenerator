@@ -1,0 +1,62 @@
+[
+    {
+        "question": "Apakah itu Laravel?",
+        "answer": "Laravel adalah framework berorientasi objektif yang membantu pengembang dalam membuat aplikasi web menggunakan bahasa pemrograman PHP.",
+        "code": "",
+        "source": "https://laravel.com/"
+    },
+    {
+        "question": "Mengapa Laravel menggunakan Eloquent untuk database?",
+        "answer": "Laravel menggunakan Eloquent karena lebih mudah dipelajari dan digunakan dibandingkan dengan ORM lainnya seperti Doctrine.",
+        "code": "",
+        "source": "Dokumen Laravel official"
+    },
+    {
+        "question": "Bagaimana cara membuat sebuah route dalam Laravel?",
+        "answer": "Dalam Laravel, Anda dapat membuat sebuah route dengan menulis fungsi PHP yang akan ditangani oleh request. Misalnya: function welcome($name) { echo 'Halo '. $name; } Untuk membuat route ini bisa dilakukan dengan memasukkan nama file di dalam routing.php seperti Route::get('/welcome', 'WelcomeController@welcome');",
+        "code": "Route::get('/welcome', 'WelcomeController@welcome')->name('welcome');",
+        "source": "Laravel Documentation: https://laravel.com/docs/8.x/routing"
+    },
+    {
+        "question": "Apakah itu Laravel?",
+        "answer": "Laravel adalah framework web berbasis PHP yang digunakan untuk membuat aplikasi web profesional.",
+        "code": null,
+        "source": "https://laravel.com/"
+    },
+    {
+        "question": "Apa itu Laravel dan bagaimana saya bisa memulainya?",
+        "answer": "Laravel adalah framework PHP yang mudah digunakan dan fleksibel. Anda dapat memulai dengan menginstalnya di komputer Anda, lalu belajar menggunakan dokumentasi resmi atau pelajaran online.",
+        "code": "",
+        "source": "Documentation of Laravel"
+    },
+    {
+        "question": "Apa itu Laravel dan bagaimana saya bisa mulai menggunakan Laravel?",
+        "answer": "Laravel adalah framework web dasar yang menguntungkan dengan sistem perintah MVC. Anda dapat memulainya dengan instalasi dari laravel.com, kemudian membaca dokumentasi dan tutorial di documentation.laravel.com untuk belajar.",
+        "code": "```bash\ncomposer global require laravel/installer\nlaravel new my-project\n```\n",
+        "source": "https://laravel.com/docs/8.x/getting-started"
+    },
+    {
+        "question": "Apa itu Laravel?",
+        "answer": "Laravel adalah framework aplikasi web open source yang sangat populer di Indonesia dan dunia.",
+        "code": "https://laravel.com/",
+        "source": "Dokumentasi Laravel"
+    },
+    {
+        "question": "Bagaimana membuat halaman baru dalam Laravel?",
+        "answer": "Buat file `routes/web.php` untuk mengatur rute, lalu buat file `create.blade.php` di folder `resources/views`, kemudian tambahkan route ke `web.php`. Gunakan middleware jika diperlukan dan gunakan Eloquent untuk membuat model.",
+        "code": "",
+        "source": ""
+    },
+    {
+        "question": "Bagaimana cara membuat sebuah fungsi CRUD (Create Read Update Delete) dalam Laravel?",
+        "answer": "Untuk membuat fungsi CRUD di Laravel, pertama Anda perlu membangun model yang sesuai untuk data Anda. Lalu, buat controller dengan berbagai metode seperti 'create', 'store', 'edit' dan 'update'. Metode ini akan dipanggil ketika ada permintaan HTTP ke endpoint itu.",
+        "code": "Berikut adalah contoh bagaimana Anda bisa membuat fungsi CRUD dalam Laravel:",
+        "source": "https://laravel.com/docs/8.x/controllers#crud"
+    },
+    {
+        "question": "Bagaimana saya bisa membuat sebuah route dalam Laravel?",
+        "answer": "Dalam Laravel, Anda bisa membuat sebuah route dengan cara menambahkan 'Route::get' atau 'Route::post'. Misalnya: Route::get('halo', function() { return 'Halo World'; }); ini akan mengirim halaman HTTP GET dengan nama endpoint 'halo'.",
+        "code": "",
+        "source": ""
+    }
+]
