@@ -1,0 +1,24 @@
+[
+    {
+        "user": "Saya baru saja mengikuti kursus Laravel dan saya sedang mencoba mengeksekusi program untuk pertama kalinya. Apa yang harus saya lakukan?",
+        "ai": "Sebagai AI, Anda sekarang bisa menggunakan beberapa perintah umum untuk mencegah eror seperti 'npm install', 'composer install', atau 'php artisan'. Untuk mengetes kestabilan programnya silakan gunakan 'php artisan serve' dan masukkan URL ke dalam browser."
+    },
+    {
+        "user": "Dimana saya harus menyiapkan koneksi database MySQL dalam script PHP?",
+        "ai": "Untuk memudahkan menjalankan SQL commands, biasanya diarahkan untuk digunakan sebagai function yang dipanggil dari PHP. Sebagai contoh, Anda bisa melakukan ini dengan membuat file `config.php` yang akan digunakan oleh aplikasi atau proyek anda. Dalam file tersebut, Anda akan menyiapkan koneksi database MySQL. Jadi, hal ini juga bisa dicontohkan sebagai langkah awal dalam menyiapkan fungsi untuk menjalankan SQL commands.",
+        "code": "Berdasarkan pemahaman ini, contoh script `config.php` yang mungkin Anda miliki adalah:\n```php\n<?php\n\n//fungsi koneksi database MySQL\nfunction koneksi_db(){\n    $koneksidb = mysqli_connect(\"localhost\",\"username\",\"password\",\"database_name\");\n    if(!$koneksidb)\n        die(\"Kesalahan: Connection Gagal. Tampilkan Error untuk Informasi Lengkap.\");\n\n    return $koneksidb;\n}\n\n//fungsi insert data\nfunction insert_data($data, $conn){\n    $sql=\"INSERT INTO table_name (column1, column2) VALUES ('$data[0]', '$data[1]')\"; //contoh menggunakan array untuk mendaftar field dan data\n    if(mysqli_query($conn,$sql)){\n        return \"Data berhasil disimpan.\n\";\n    }else{\n        return \"Error: $sql \n\".mysqli_error($conn);\n    }\n}\n```\n"
+    },
+    {
+        "user": "Saya memiliki beberapa pertanyaan spesifik tentang database berbasis cloud.",
+        "ai": "Tentu, saya siap membantu Anda. Apa yang pertama Anda ingin tahu? Mungkin ada sekelompok hal yang spesial dan memerlukan pembahasan lebih dalam."
+    },
+    {
+        "user": "Untuk apa digunakan token dalam API?",
+        "ai": "Token adalah alamat URL yang biasanya dikirimkan saat membuka API. Token ini memainkan peran penting dalam autentikasi dan identifikasi sumber daya API. Jika Anda menggunakan token, pastikan untuk melakukan validasi sebelum menggunakan data tersebut."
+    },
+    {
+        "user": "Berdasarkan apa itu authentication?",
+        "ai": "Authentication adalah proses verifikasi yang dilakukan untuk memastikan bahwa pengguna menggunakan akun mereka benar-benar dirinya sendiri dan tidak dicuri oleh orang lain. Jadi, setiap kali kita mengakses sebuah aplikasi atau website, sistem tersebut akan memerlukan identitas pengguna sebelum memberikan akses.",
+        "contoh_kode": "Sistem ini menggunakan otorisasi API token untuk verifikasi. Token ini dibuat ketika user melakukan registrasi dan harus dienkripsi dengan kunci rahasia."
+    }
+]

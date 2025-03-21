@@ -1,0 +1,14 @@
+[
+    {
+        "question": "Berapa banyak route yang dapat ditambahkan ke dalam sebuah file routes.php?",
+        "answer": "Tidak terbatas, Anda dapat menambahkan berbagai jenis route seperti GET, POST, PUT, dan DELETE.",
+        "code": "```php Route::get('/', function () { return view('welcome'); });```, 'Welcome' bisa diubah ke nama controller atau metode yang sesuai.",
+        "source": "https://laravel.com/docs/8.x/routing"
+    },
+    {
+        "question": "Apakah yang dimaksud dengan 'guard' dalam Laravel?",
+        "answer": "Guard digunakan untuk menentukan bagaimana controller akan menjalankan operasi.",
+        "code": "```php\nRoute::middleware('auth')->get('/dashboard', function () {\n\tAuth::routes();\n});\n```\n",
+        "source": "https://laravel.com/docs/9.x/routing#using-middleware"
+    }
+]

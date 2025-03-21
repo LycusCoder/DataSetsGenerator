@@ -1,0 +1,309 @@
+[
+    {
+        "question": "Mengapa routing Laravel menggunakan '/' sebagai default?",
+        "answer": "Untuk menentukan posisi halaman web di file index.php.",
+        "code": "Contoh dengan method 'route': $page = route('home');",
+        "source": "https://laravel.com/docs/8.x/routing"
+    },
+    {
+        "question": "Apakah pentingnya menggunakan controller dalam aplikasi Laravel?",
+        "answer": "Controller adalah kunci utama dalam Laravel karena menyediakan rute URLs yang dapat digunakan oleh halaman web.",
+        "code": "",
+        "source": "https://laravel.com/docs/8.x/controllers"
+    },
+    {
+        "question": "Berapa banyak tabel dalam Eloquent?",
+        "answer": "Eloquent menggunakan kelas 'Model' sebagai peta tabel ke database.",
+        "code": "```php\n$models = app()->models;\n$countTabels = count($models);\nreturn $countTabels;\n```",
+        "source": "https://laravel.com/docs/9.x/eloquent#introduction"
+    },
+    {
+        "question": "Bagaimana cara mengganti entri dalam table 'users' di Laravel?",
+        "answer": "Gunakan method `updateOrCreate` pada model.",
+        "code": "```php\n$user = User::where('email', $email)->first();\n$user->name = $name;\n$user->save();\n```\n",
+        "source": "https://laravel.com/docs/8.x/eloquent#updating"
+    },
+    {
+        "question": "Jadi, berapa banyak middleware yang biasanya dipakai di Laravel?",
+        "answer": "Umumnya ada sekitar 5-10 middleware di sebuah aplikasi Laravel.",
+        "code": "Contoh kode dalam file `app/Http/Middleware/CheckOrigin.php` berikut ini adalah satu middleware yang tidak umum: \n\n```php\nday_name = function($request, $next) {\n        return response('hello world', 200);\n};\n```\n",
+        "source": "https://laravel.com/docs/8.x/http"
+    },
+    {
+        "question": "Bagaimana membuat form inputan berbeda dalam Blade?",
+        "answer": "Menggunakan `@component` untuk memuat file template dan `@slot` dan `@endslot` untuk menulis kode yang ingin diisi.",
+        "code": "@extends('layout.app')\n\n@section('content')\n\n\t<div class='container'>\n\t\t<form>\n\t\t\t{{ \r\n\t\t\t\t@component('forms.input') {{ \r\n\t\t\t\t\tslot() \r\n\t\t\t\t} @endcomponent }}\n\t\t</form>\n\t</div> \n\n@endsection",
+        "source": "https://laravel.com/docs/8.x/views#including-components"
+    },
+    {
+        "question": "Mengapa validation mesti dimulai dari 'validated data' sebelum diproses?",
+        "answer": "Dengan menggunakan 'validated data', kita bisa melindungi keberadaan entitas pada database dan memastikan bahwa semua input valid sebelum melakukan transaksi.",
+        "code": {
+            "valid": [
+                "$request->validate(['email' => 'required|email|max:255|unique:users']),"
+            ],
+            "invalid": [
+                "$validated = $request->only('name', 'age'); $this->validate($validated);"
+            ]
+        },
+        "source": "https://laravel.com/docs/9.x/validation#validating-data"
+    },
+    {
+        "question": "Bagaimana mendefinisikan API resources dalam Laravel untuk pengguna baru?",
+        "answer": "API resources memberi nama kepada kelas Model dalam bentuk API.",
+        "code": "Pertama, definisikan model seperti biasa. Lalu buat kelas dengan nama yang sesuai, misal 'UserResource'. Jika ada atribut yang tidak masuk dalam API, ambil atribut awal dari model dan panggil method GET atau POST berdasarkan tipe data.",
+        "source": "https://laravel.com/docs/9.x/routing#resource-endpoints"
+    },
+    {
+        "question": "Bagaimana menambahkan event-listener ke controller dalam Laravel?",
+        "answer": "Untuk menambahkan event-listener, masukkan `->listen()` pada metode Anda.",
+        "code": "public function myMethod($event) {\n    echo $event; // Berfungsi seperti mengklik 'Listen to' di console\n}",
+        "source": "https://laravel.com/docs/8.x/events#implementing-an-event"
+    },
+    {
+        "question": "Bagaimana menjalankan tugas secara periodic dalam Laravel?",
+        "answer": "Gunakan kelas CronJob untuk melakukan tugas periodic.",
+        "code": "```php\ncronjob artisan schedule:run daily\n```",
+        "source": "https://laravel.com/docs/8.x/scheduling"
+    },
+    {
+        "question": "Bagaimana cara menambahkan route dalam file routes/web.php untuk mengakses controller dengan nama 'HomeController'?",
+        "answer": "Untuk menambahkan route, tambahkan bagian berikut ke dalam routes/web.php dan ganti '/home' sesuai dengan konfigurasi Anda.",
+        "code": "Route::get('/home', [HomeController::class, 'index'])->name('home');",
+        "source": "https://laravel.com/docs/9.x/routing"
+    },
+    {
+        "question": "Pertanyaan tentang fungsi filter() di Controller.",
+        "answer": "Fungsi `filter()` mengembalikan array baru dengan elemen-elemennya yang sesuai dengan kondisi tertentu. Ini sangat berguna untuk menyaring data sebelum disimpan atau diproses lebih lanjut.",
+        "code": "return $items->filter(function($item, $key) { return $item['price'] < 50; });",
+        "source": "https://laravel.com/docs/8.x/collections#method-filter"
+    },
+    {
+        "question": "Mengapa kita menggunakan `belongsTo` dalam Eloquent?",
+        "answer": "Karena `belongsTo` membantu satu entitas mengelola keterkaitan dengan entitas lain tanpa membutuhkan 'pivot table'. Ini menciptakan transparansi dan keandalan dalam struktur database.",
+        "code": "```php\n$user->follows()->attach($friendId);\n```\n",
+        "source": "https://laravel.com/docs/8.x/eloquent#one-to-many-relationships"
+    },
+    {
+        "question": "Bagaimana migrasi laravel berjalan secara otomatis di deploy?",
+        "answer": "Migrasi otomatis dilakukan dengan memastikan sistem memiliki konfigurasi yang benar untuk perangkat lunak deployment.",
+        "code": "Contoh: `php artisan migrate` dapat diprogram untuk melakukan migrasi sebelum deployment, membantu mengembalikannya setelah aplikasi ditambahkan ke server.",
+        "source": "https://laravel.com/docs/8.x/migrations"
+    },
+    {
+        "question": "Apakah itu middleware di Laravel?",
+        "answer": "Middleware adalah sekelompok perangkat lunak yang dipasang pada aplikasi web Laravel untuk mengambil tindakan khusus ketika suatu halaman atau action tertentu dibuka.",
+        "code": "\n```\npm install --save-dev middleware-class\n```",
+        "source": "https://laravel.com/docs/8.x/http"
+    },
+    {
+        "question": "Kapan sebaiknya menggunakan blade dalam sebuah view?",
+        "answer": "Dalam Blade, jangan hanya memfokuskan pada rendering data. Sebaiknya gunakan Blade untuk mengorganisir dan mengelompokkan kode view sesuai fungsionalitas.",
+        "code": "@section('content') <p>Lorem ipsum dolor sit amet...</p> @endsection",
+        "source": "https://laravel.com/docs/7.x/views#displaying-a-fragment"
+    },
+    {
+        "question": "Bagaimana cara memvalidasi inputan user dalam frontend?",
+        "answer": "Gunakan library HTML5 seperti Joi atau Validate untuk mendapatkan data user dari form dan memastikan keberadaannya.",
+        "code": "```php\n<input type='text' name='name'>\n<div class='input-group'></div>\n</form>\n<script src='https://cdn.jsdelivr.net/npm/@hapi/joi@17.3.2/dist/joi.min.js'></script>\n<script>\nlet schema = Joi.object().keys({\n  name: Joi.string()\n});\nconst body = schema.validate(document.querySelector('form').elements[0]);\nif (!body.error) {\n  console.log(body.value.name); // Validasi berhasil\n}\n</script>\n",
+        "source": "https://joi.dev/"
+    },
+    {
+        "question": "Bagaimana merubah status produk dari 'Active' ke 'Inactive' dalam API resources?",
+        "answer": "Gunakan method PUT atau PATCH pada endpoint produk untuk mengganti statusnya.",
+        "code": "curl -X PATCH https://example.com/api/products/1 -u username:password -H 'Content-Type: application/json' -d '{\"status\": \"Inactive\"}'",
+        "source": "https://laravel.com/docs/8.x/http#resource-endpoints"
+    },
+    {
+        "question": "Bagaimana cara memanggil event-listener di Laravel?",
+        "answer": "Menggunakan 'on' atau 'addEventListener' method dari JavaScript.",
+        "code": "const myButton = document.getElementById('my-button');\nmyButton.addEventListener('click', function() { console.log('Button clicked!'); })",
+        "source": "https://laravel.com/docs/8.x/event-bus#registering-events"
+    },
+    {
+        "question": "Bagaimana cara membuat task-scheduling pada Laravel?",
+        "answer": "Dengan menginstal package 'schedule' dan menggunakan class `Schedulable` untuk memanggil fungsi.",
+        "code": "// Install package: composer require qti/schedule",
+        "source": "https://github.com/qti-laravel/schedule"
+    },
+    {
+        "question": "Apakah yang dimaksud dengan 'namespace' dalam routing Laravel?",
+        "answer": "Dimana halaman atau API diidentifikasi di dalam sistem.",
+        "code": "Contoh kode Laravel berikut mengakses namespace:",
+        "source": "https://laravel.com/docs/8.x/routing#introduction"
+    },
+    {
+        "question": "Bagaimana menambahkan middleware ke dalam controller?",
+        "answer": "Menggunakan method 'middleware' pada class Controller.",
+        "code": "public function someAction(Request $request) { return view('somewhere', ['middleware' => Middleware::class]); }",
+        "source": "https://laravel.com/docs/8.x/controllers#additional-methods"
+    },
+    {
+        "question": "Penggunaan Eloquent untuk memilih data berdasarkan kondisi tertentu?",
+        "answer": "Eloquent memungkinkan Anda menentukan kriteria yang disesuaikan dengan cara seperti `where('age', '<', 30)`.",
+        "code": "```php\n $users = User::where('gender', 'female')->get();\n```\n",
+        "source": "https://laravel.com/docs/8.x/database"
+    },
+    {
+        "question": "Bagaimana penggunaan migration dalam mengelola database berbasis Laravel?",
+        "answer": "Melalui `php artisan make:migration` untuk membuat migration, dimana proses ini membantu merubah database secara dinamis.",
+        "code": "```php\nphp artisan make:migration add_user_column_to_users_table --table=users\r\n```",
+        "source": "https://laravel.com/docs/8.x/migrations#creating-migrations"
+    },
+    {
+        "question": "Apakah fungsi dari middleware dalam Laravel?",
+        "answer": "Middleware adalah kumpulan metode kode di belakang layar yang mempengaruhi bagaimana aplikasi menangani permintaan.",
+        "code": "```php\npublic function handle(Request $request)\n{\n    // Code middleware\n}\n```\n",
+        "source": "https://laravel.com/docs/8.x/router#middleware"
+    },
+    {
+        "question": "Mengapa Blade memiliki atribut `@section` dan `@show`?",
+        "answer": "Untuk menyesuaikan template sesuai kebutuhan kustom dalam blade.",
+        "code": "{blade section} @section('content') <p>Content goes here</p> @show",
+        "source": "https://laravel.com/docs/9.x/views#displaying-a-section"
+    },
+    {
+        "question": "Bagaimana saya bisa memvalidasi inputan nama untuk hanya boleh berisi karakter alfanumerik?",
+        "answer": "Pilihlah validator 'regex' dengan regex pattern `[A-Za-z0-9]+'.",
+        "code": "Validator::unguard()->rules(['name' => 'required|alpha_numeric_only'])->validate();",
+        "source": "https://laravel.com/docs/8.x/validation#validating-fields"
+    },
+    {
+        "question": "Bagaimana menyediakan API resources untuk endpoint '/users'?",
+        "answer": "Gunakan 'Route::resource()' di file routes/web.php atau web.php.",
+        "code": "Route::resource('/users', UserResourceController::class);",
+        "source": "https://laravel.com/docs/8.x/routing#resources"
+    },
+    {
+        "question": "Apakah event-listener digunakan untuk?",
+        "answer": "Untuk mengaktifkan suatu aksi atau perintah ketika ada permintaan tertentu.",
+        "code": ".route('/welcome', function () { ... });",
+        "source": "https://laravel.com/docs/8.x/routing"
+    },
+    {
+        "question": "Bagaimana menambahkan task-scheduling ke aplikasi Laravel untuk penggunaan secara langsung?",
+        "answer": "Melakukan perpindahan file 'schedule.php' di directory app, kemudian memanggil fungsi nya pada route yang akan kita jalankan.",
+        "code": "```php\n// File schedule.php\ndelay(Now)->everyMinute->send(function () {\n    \t\techo 'Message sent at 0 minute.\n';\n});```\n\nJika ingin mengubah waktu, gunakan `minute`, `hour`, dan `day_of_week`.",
+        "source": "https://laravel.com/docs/8.x/scheduling#adding-schedules"
+    },
+    {
+        "question": "Pertanyaan tentang routing dalam Laravel untuk pemula?",
+        "answer": "Routing adalah alur pengiriman permintaan ke fungsi controller. Jika kita memiliki route ini `route('welcome')`, maka laravel akan memanggil `WelcomeController@index`.",
+        "code": "Route::get('/welcome', [WelcomeController::class, 'index'])->name('welcome');",
+        "source": "https://laravel.com/docs/8.x/routing"
+    },
+    {
+        "question": "Apakah cara mengakses data dari model ke dalam view di Laravel?",
+        "answer": "Gunakan `$data` array pada fungsi render() di controller.",
+        "code": "return view('example', ['data' => $modelInstance->getData()]);",
+        "source": "https://laravel.com/docs/8.x/views"
+    },
+    {
+        "question": "Apa itu Eloquent?",
+        "answer": "Eloquent adalah ORM (Object-Relational Mapping) dalam Laravel yang membantu pengguna mengubah data ke database.",
+        "code": "```php\n// Contoh menggunakan Eloquent untuk CRUD data pada tabel 'posts'\n$posts = Post::all();\nforeach ($posts as $post) {\n\t$post->title; // Mengakses title dari setiap post\n}\n```\n",
+        "source": "https://laravel.com/docs/9.x/easiness#orm"
+    },
+    {
+        "question": "Apakah pengertian migration dalam Laravel?",
+        "answer": "Migrations adalah file SQL pada Laravel yang digunakan untuk membuat database berbasis MySQL.",
+        "code": "```php artisan make:migration create_table_name --create\n```",
+        "source": "https://laravel.com/docs/8.x/migrations"
+    },
+    {
+        "question": "Mengapa kita perlu middleware dalam aplikasi Laravel?",
+        "answer": "Middleware memberi kontrol atas petunjuk-proses khusus di setiap halaman request ke server.",
+        "code": "```php\n$middleware = array('auth', 'redirect_if_not_logged');\nRoute::group($middleware, function () {\n\t// Route yang harus diproses menggunakan middleware ini\n});\n```",
+        "source": "https://laravel.com/docs/8.x/routing#route-groups"
+    },
+    {
+        "question": "Mengapa menggunakan Blade dalam template Laravel?",
+        "answer": "Menyediakan struktur dan desain responsif untuk HTML, memudahkan pengembang dalam mengekspresikan tampilan mereka",
+        "code": "{x} @extends('layout') {x}",
+        "source": "https://laravel.com/docs/8.x/views"
+    },
+    {
+        "question": "Bagaimana cara mengatur validation dalam model laravel untuk inputan yang sesuai?",
+        "answer": "Kita membuat rule untuk validation dengan menambahkan rules ke array `$rules` pada method `validasi`",
+        "code": "```php\nclass MyModel extends Model {    public function validasi($attributes) {        $this->validate(['field_name' => ['required', 'regex:/^[a-zA-Z]+$/']]);    }}```",
+        "source": "https://laravel.com/docs/8.x/validation"
+    },
+    {
+        "question": "Apakah perbedaan antara `api/resources` dan `resource()` dalam Laravel untuk API resources?",
+        "answer": "Resource digunakan untuk definisi, sementara api/resources dirancang untuk melakukan routing.",
+        "code": "\n```php\n// Resource\n$users = User::all();\nreturn view('users.index', ['users' => $users]);\n\n// API Resources\nRoute::resource('api/users', 'UserController');\n```\n",
+        "source": "https://laravel.com/docs/8.x/routing#resource-endpoints"
+    },
+    {
+        "question": "Bagaimana menggunakan event-listener dalam Laravel untuk memanggil fungsi saat halaman didekati?",
+        "answer": "Event-listener adalah cara sederhana untuk memanggil fungsi saat elemen seperti formulir, button atau layout ditekan atau disentuh. Dalam Laravel, ini dapat dilakukan dengan mengimplementasikan event di model yang menerima perintah klik.",
+        "code": "```php\ndb::model('YourModel')->bindEvent(function($event) {\n\tfunctionName();\n});```\n\nUntuk mendapatkan contoh kode ini lebih spesifik, silakan mencari dokumentasi Laravel atau pembelajaran tentang event listeners.",
+        "source": "https://laravel.com/docs/8.x/events"
+    },
+    {
+        "question": "Mengapa Laravel menggunakan task-scheduling?",
+        "answer": "Untuk menjalankan perintah secara otomatis di laman 404, misal.",
+        "code": "Laravel akan menjalankan tasks secara teratur tanpa intervensi user. Contoh: `php artisan schedule:run` untuk memulai task setiap jam",
+        "source": "https://laravel.com/docs/8.x/scheduling"
+    },
+    {
+        "question": "Apakah pentingnya menggunakan route 'name' instan dalam routing?",
+        "answer": "Jika anda memiliki beberapa controller dengan nama serupa, Anda bisa membuat URL yang berbeda untuk setiap controller dengan menyertakan parameter.",
+        "code": "Contoh:\n```php\nRoute::get('/users/{user}', [UserController::class, 'showUser'])->name('users.show');\n```",
+        "source": "https://laravel.com/docs/8.x/routing#named-routes"
+    },
+    {
+        "question": "Bagaimana membuat CRUD (Create, Read, Update, Delete) dalam controller?",
+        "answer": "Menggunakan method GET untuk READ data, POST untuk CREATE new record, PUT/PATCH untuk UPDATE existing record, DELETE untuk HAPUS.",
+        "code": "{ Route::resource('users', 'UserController')->except(['destroy']); }",
+        "source": "https://laravel.com/docs/8.x/controllers#controller-methods"
+    },
+    {
+        "question": "Bagaimana menggunakan Eloquent untuk membuat kelas dalam Laravel?",
+        "answer": "Gunakan `use App\\ModelName` di atas fungsi atau method yang akan dipakai.",
+        "code": "\n// Dalam file model\nuse App\\Post;\n\npublic function comment() {\n   return $this->hasMany('App\\Comment');\n}\n",
+        "source": "https://laravel.com/docs/8.x/eloquent"
+    },
+    {
+        "question": "Migrating a project from one hosting provider to another without affecting existing database connections.",
+        "answer": "Use the `migrate:refresh` command in your Laravel environment to drop and recreate all of your migrations, ensuring that your data is unaffected by changes between providers.",
+        "code": "laravel artisan migrate --seed",
+        "source": "https://laravel.com/docs/8.x/migrations#running-migrations"
+    },
+    {
+        "question": "Dari kumpulan middleware, apa yang merespons request ke action 'authenticate'?",
+        "answer": "Pengaturan permintaan untuk memeriksa dan memverifikasi pengguna.",
+        "code": "class AuthenticationMiddleware extends HttpKernel\\RequestHandler {\n\tpublic function handle($request, \n\t\t\tHttpKernel\\RequestInterface $request): ?Response",
+        "source": "https://laravel.com/api/html"
+    },
+    {
+        "question": "Mengapa Blade harus digunakan pada Laravel?",
+        "answer": "Blade membantu memudahkan struktur view dalam aplikasi, menjadikan halaman web lebih responsif dan mempercepat kinerja",
+        "code": "@extends('layouts.app') // Mengikuti template yang sudah dibuat sebelumnya",
+        "source": "https://laravel.com/docs/8.x/views"
+    },
+    {
+        "question": "Kapan harus memanggil validation di Laravel?",
+        "answer": "Untuk menyegarkan data baru saat registrasi atau mengisi formulir.",
+        "code": "```php $validatedData = $request->validate();```, $validatedData berisi informasi validasi",
+        "source": "https://laravel.com/docs/8.x/validation"
+    },
+    {
+        "question": "Bagaimana saya dapat membuat endpoint API yang hanya menerima POST request?",
+        "answer": "Gunakan `Route::post()` untuk definisikan endpoint API.",
+        "code": "Route::post('/endpoint', function () { return view('view-name'); });",
+        "source": "https://laravel.com/docs/8.x/routing"
+    },
+    {
+        "question": "Mengapa kita perlu menggunakan event-listener dalam Laravel?",
+        "answer": "Untuk mengeksekusi sebuah aksi atau fungsi ketika suatu event terjadi, seperti saat server mendapatkan permintaan HTTP.",
+        "code": "```php \npublic function handle($request) { \n   $this->dispatch(new FetchDataEvent());\n} \npublic function listen() {\n   $events = new EventServiceProvider();\n   $events->listen('FetchDataEvent', function ($event) { \n       // Your code here\n   }); \n}\n```\n",
+        "source": "https://laravel.com/docs/8.x/events#introduction"
+    },
+    {
+        "question": "Bagaimana menyiasati masalah scheduling batch di Laravel?",
+        "answer": "Gunakan fungsi Cron untuk menjalankan tugas secara batch pada jadwal tertentu.",
+        "code": "@schedule(['cron' => '*/5 * * * *'], function () { // Batch task })",
+        "source": "https://laravel.com/docs/8.x/scheduling#crontab"
+    }
+]
